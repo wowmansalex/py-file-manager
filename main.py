@@ -20,6 +20,12 @@ def delete_file():
   path = enterbox("Which file you want to delete")
   os.remove(path)
 
+def rename_file():
+  file_rename = enterbox("Which file you want to rename?")
+  name_rename = enterbox("What you want to rename it to?")
+  os.rename(file_rename, name_rename)
+  print("file successfully renamed")
+
 while 1:
   msg = "which file operation do you want to do?\n"
   title="File Manager"
@@ -35,6 +41,9 @@ while 1:
   elif choice == 'Delete file':
     pass
     delete_file()  
+  elif choice == 'Rename file':
+    pass
+    rename_file()
   else:
     sys.exit(0)
 
