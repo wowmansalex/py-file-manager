@@ -1,15 +1,40 @@
+import sys
 import os 
 import shutil
+import tkinter
+from easygui import *
 
-#get the source directory
-src = input("What is the source of the file you want to move?\n")
-
-#get the the target directory
-dest = input("Where do you want to move the file?\n")
-#function that moves file from source to target directory
-
-def move_file(src,dest):
+def move_file():
+  src = enterbox("What is the source of the file you want to move?")
+  dest = enterbox("Where do you want to move the file?\n")
   shutil.move(src, dest)
   print(f"file successfully moved to destionation folder")
 
-move_file(src, dest)
+def copy_file():
+  src = enterbox("What is the source of the file you want to move?")
+  dest = enterbox("Where do you want to move the file?\n")
+  shutil.copyfile(src, dest)
+  print(f"file successfully copied to destionation folder")
+
+def delete_file():
+  path = enterbox("Which file you want to delete")
+  os.remove(path)
+
+while 1:
+  msg = "which file operation do you want to do?\n"
+  title="File Manager"
+  choices = ["Copy file", "Move file", "Delete file", "Rename file"]
+  choice = choicebox(msg, title, choices)
+  # msg = "Do you want to perform this action now?"
+  if choice == 'Move file':
+    pass
+    move_file()
+  elif choice == 'Copy file':
+    pass
+    copy_file()
+  elif choice == 'Delete file':
+    pass
+    delete_file()  
+  else:
+    sys.exit(0)
+
